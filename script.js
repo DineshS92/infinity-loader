@@ -9,9 +9,8 @@ let photosArray = [];
 // Unsplash API
 
 let count = 5;
-const query = 'munich'
-const apiKey = 'i5f8zhTCguoqWHm1nEEo5Oqfvjqfx1YQW3kWYIHtsCE';
-const apiUrl = `https://api.unsplash.com/photos/random/?query=${query}&count=${count}&client_id=${apiKey}`;
+const query = 'munich';
+
 
 // Check if image were loaded
 const imageLoaded = () => {
@@ -63,7 +62,16 @@ const displayPhotos = () => {
 // Get photos from unsplash
 const getPhotos = async() => {
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch('/.netlify/functions/image-fetch', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        query: query,
+        count: count
+      })
+    });
     photosArray = await response.json();
     displayPhotos();
   } catch (error) {
