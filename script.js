@@ -10,7 +10,7 @@ let photosArray = [];
 
 let count = 5;
 const query = 'munich'
-const apiKey = process.env.API_KEY;
+const apiKey = 'i5f8zhTCguoqWHm1nEEo5Oqfvjqfx1YQW3kWYIHtsCE';
 const apiUrl = `https://api.unsplash.com/photos/random/?query=${query}&count=${count}&client_id=${apiKey}`;
 
 // Check if image were loaded
